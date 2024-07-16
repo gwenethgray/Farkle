@@ -4,6 +4,8 @@ This dice rolling game has unclear origins, with some trademark holders and fans
 
 My friend Talon introduced me to it using a version where, when a player chooses to keep the points they've acquired and refrain from re-rolling any remaining dice, the next player has the option of "stealing": they can re-roll the remaining dice, and if they get any scoring combinations (even just a single 1 or a single 5), then they take the first player's points for that turn and keep rolling! However, if they "scratch" by failing to score, then they get no points, and then skip their own turn.
 
+### Scoring
+
 Here is a table of the scoring combinations he taught me:
 
 ![ScoreTable](https://github.com/user-attachments/assets/fa9487db-c0cd-42a9-9f8b-216beb767fdb)
