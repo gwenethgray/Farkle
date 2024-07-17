@@ -8,7 +8,7 @@ My friend Talon introduced me to it using a version where, when a player chooses
 
 Here is a table of the scoring combinations he taught me:
 
-![ScoreTable](https://github.com/user-attachments/assets/fa9487db-c0cd-42a9-9f8b-216beb767fdb)
+![score-combinations](https://github.com/user-attachments/assets/a1312159-c530-4691-8358-774742654135)
 
 Fresh out of a course on Monte Carlo simulations, I couldn't stop thinking about finding the optimal strategy for this game. So I implemented the game logic in Python, with automated Players basing their decisions whether or not to re-roll (or steal) a pool of dice on the number of points at stake and the number of dice remaining. It's simple to see that the probability of scoring with just one die is 33%, and the probability increases with the number of dice. Against those odds, I quickly realized while playing that I would never waste my turn trying to steal one die from a previous player; but how many points would it take to tempt me to steal two? Three? Or, from another angle, how many points would I want to accrue on my turn before passing up the option of re-rolling two or more dice? I surely wouldn't want my opponent to have better odds of stealing my bounty than my odds of increasing it.
 
