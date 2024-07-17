@@ -12,7 +12,15 @@ Here is a table of the scoring combinations he taught me:
 
 Fresh out of a course on Monte Carlo simulations, I couldn't stop thinking about finding the optimal strategy for this game. So I implemented the game logic in Python, with automated Players basing their decisions whether or not to re-roll (or steal) a pool of dice on the number of points at stake and the number of dice remaining. It's simple to see that the probability of scoring with just one die is 33%, and the probability increases with the number of dice. Against those odds, I quickly realized while playing that I would never waste my turn trying to steal one die from a previous player; but how many points would it take to tempt me to steal two? Three? Or, from another angle, how many points would I want to accrue on my turn before passing up the option of re-rolling two or more dice? I surely wouldn't want my opponent to have better odds of stealing my bounty than my odds of increasing it.
 
-After simulating billions of turn histories using tens of thousands of variations of sets of "threshold" numbers of points one might want to have accrued before passing up N dice (for each N), and comparing the win rates of all variations, I arrived at a rough approximation of high-performing "score safety caps":
+I computed distributions of cumulative scores reached, and rate of scratching, when starting from a roll of N dice, where N in {1, 6}:
+
+![farkle-score-distributions](https://github.com/user-attachments/assets/7638a567-912a-42ff-9497-5e3cd340e41d)
+
+After simulating billions of turn histories using ten thousand variations of sets of "threshold" numbers of points one might want to have accrued before passing up N dice (a 5-dimensional tensor of threshold sets, since I would never consider passing on rolling 6 dice), I obtained the total score, scratch frequency (number of 0 scores divided by number of turns), mean score per turn, and median score per turn for each variation. Then, I computed weights in two ways: first by dividing the mean score by the scratch frequency, then by dividing the median score by the scratch frequency. Finally, for both methods, I selected the top 5 variations by weight and calculated the mean score threshold for 1 die, 2 dice, etc., and used the resulting two heuristics to guide the decisions of two types of "bot" players: MeanBot and MedianBot. When I simulated 10,000 games with one MeanBot, one MedianBot, and one bot player that simply made random decisions, these were the histograms of their total end-of-game scores:
+
+![farklebot-algorithms](https://github.com/user-attachments/assets/fe83294f-7f69-4c83-b398-a0964626c775)
+
+Clearly, MeanBot was the most successful. These were the winning score thresholds, which MeanBot used:
 
 ![ScoreSafetyCaps](https://github.com/user-attachments/assets/42af5de9-db9b-42c0-914c-95137e030c6a)
 
